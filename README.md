@@ -176,7 +176,7 @@ CREATE TABLE WaterQualityData (
 
 
 
-5.	Recommendations
+4.	Recommendations
    CREATE TABLE Recommendations (
     rec_id INT AUTO_INCREMENT PRIMARY KEY,
     source_id INT,
