@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\hydroTrack",
+    "\\hydroTrack\\mysite",
+    "\\hydroTrack\\mysite\\templates",
+    "\\hydroTrack\\mysite\\waterTracker"
+  ],
+  "SelectedNode": "\\hydroTrack\\mysite\\waterTracker\\views.py",
+  "PreviewInSolutionExplorer": false
+}

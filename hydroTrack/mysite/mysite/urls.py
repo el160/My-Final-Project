@@ -16,9 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from .views import favicon_view
 from waterTracker.views import home_screen
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_screen),
+    path('favicon.ico',favicon_view)
 ]
