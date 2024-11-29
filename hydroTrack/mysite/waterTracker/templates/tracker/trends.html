@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Source Trends</title>
+</head>
+<body>
+    <h1>Water Source Trends</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Location</th>
+                <th>pH</th>
+                <th>Turbidity</th>
+                <th>Contaminants</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for source in data %}
+                <tr>
+                    <td>{{ source.location }}</td>
+                    <td>{{ source.ph }}</td>
+                    <td>{{ source.turbidity }}</td>
+                    <td>{{ source.contaminants }}</td>
+                    <td>{{ source.status }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+{% endblock content  %}

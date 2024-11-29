@@ -31,8 +31,8 @@ def home(request):
             "recommendations": recommendations
         })
 
-    return render(request, "home.html")
+    return render(request, "tracker/result.html")
 
 def trends(request):
     data = WaterSource.objects.all()
-    return render(request, "trends.html", {"data": data})
+    return render(request, "tracker/trends.html", {"data": data})
