@@ -1,5 +1,9 @@
 Water Quality Monitoring and Assessment System for Marginalized Areas
 
+PROTOTYPE.PY FILE CODE SHOW HOW THE SYSTEM WILL WORK 
+
+
+
 A.	Description
 This project is based one of the UN SDGS that is availability of clean water and sanitation. 
 For instance, in marginalized areas human beings often share the share same water source with animals hence the chance of water contamination is high. In some areas people use sewage water for their normal daily routine, this has increased water related diseases. Bad enough industrial and sewage water is released into rivers thus there is an urge to offer a solution to such incidences.
