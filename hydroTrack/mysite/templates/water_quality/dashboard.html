@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <h2>Water Quality Dashboard</h2>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Water Sources</h5>
+            </div>
+            <div class="card-body">
+                {% if sources %}
+                    <div class="list-group">
+                        {% for source in sources %}
+                            <div class="list-group-item">
+                                <h6 class="mb-1">{{ source.name }}</h6>
+                                <p class="mb-1">Location: {{ source.location }}</p>
+                                <small>Added on: {{ source.created_at|date }}</small>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p>No water sources added yet.</p>
+                {% endif %}
+                <a href="{% url 'add_source' %}" class="btn btn-primary mt-3">Add New Source</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Recent Measurements</h5>
+            </div>
+            <div class="card-body">
+                {% if recent_data %}
+                    <div class="list-group">
+                        {% for data in recent_data %}
+                            <div class="list-group-item">
+                                <h6 class="mb-1">{{ data.source.name }}</h6>
+                                <p class="mb-1">
+                                    pH: {{ data.ph_level }} |
+                                    Turbidity: {{ data.turbidity }} |
+                                    Contaminants: {{ data.contaminants }}
+                                </p>
+                                <span class="badge {% if data.is_safe %}bg-success{% else %}bg-danger{% endif %}">
+                                    {{ data.is_safe|yesno:"Safe,Unsafe" }}
+                                </span>
+                                <small class="d-block mt-1">Recorded: {{ data.recorded_date|date:"F d, Y" }}</small>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p>No measurements recorded yet.</p>
+                {% endif %}
+                <a href="{% url 'add_quality_data' %}" class="btn btn-primary mt-3">Add New Measurement</a>
+            </div>
+        </div>
+    </div>
+    
+    {% if plot_div %}
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Water Quality Trends</h5>
+                </div>
+                <div class="card-body">
+                    {{ plot_div|safe }}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
