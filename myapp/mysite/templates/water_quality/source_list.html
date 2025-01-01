@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Water Sources{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-4">
+        <div class="col">
+            <h2>Water Sources</h2>
+        </div>
+        <div class="col text-end">
+            <a href="{% url 'water_quality:add_source' %}" class="btn btn-primary">Add New Source</a>
+        </div>
+    </div>
+
+    <div class="row">
+        {% if sources %}
+            {% for source in sources %}
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ source.name }}</h5>
+                            <p class="card-text">
+                                <strong>Location:</strong> {{ source.location }}<br>
+                                <strong>Added:</strong> {{ source.created_at|date:"F d, Y" }}
+                            </p>
+                            <a href="{% url 'water_quality:source_detail' source.pk %}" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="col">
+                <div class="alert alert-info">
+                    No water sources added yet. 
+                    <a href="{% url 'water_quality:add_source' %}" class="alert-link">Add your first water source</a>.
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

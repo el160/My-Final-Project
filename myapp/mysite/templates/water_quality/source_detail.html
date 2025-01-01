@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ source.name }} Details{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">{{ source.name }}</h2>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-3">Location</dt>
+                        <dd class="col-sm-9">{{ source.location }}</dd>
+                        
+                        <dt class="col-sm-3">Coordinates</dt>
+                        <dd class="col-sm-9">{{ source.latitude }}, {{ source.longitude }}</dd>
+                        
+                        <dt class="col-sm-3">Added On</dt>
+                        <dd class="col-sm-9">{{ source.created_at|date:"F d, Y" }}</dd>
+                    </dl>
+                    
+                    <div class="mt-4">
+                        <a href="{% url 'water_quality:add_quality_data' %}" class="btn btn-primary">Record Water Quality</a>
+                        <a href="{% url 'water_quality:source_list' %}" class="btn btn-secondary">Back to Sources</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
